@@ -1,0 +1,9 @@
+from django.db import models
+
+# Create your models here.
+class devBlog(models.Model):
+    uniqueKeys=models.CharField(max_length=200,default="")
+    title=models.CharField(max_length=200,default="")
+    code=models.CharField(max_length=200,default="")
+    class Meta:
+        db_table="devBlog"
