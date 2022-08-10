@@ -2,6 +2,7 @@ from rest_framework.serializers import ModelSerializer,SerializerMethodField
 from rest_framework import generics
 from .models import *
 
+
 class devBlogSer(ModelSerializer):
     class Meta:
         model = devBlog
