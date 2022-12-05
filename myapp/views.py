@@ -6,8 +6,19 @@ from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView
 from .serializer import * 
+import textblob as tb
 
 
+
+def translate(Request):
+    blob=tb.TextBlob("submit")
+    s=blob.translate(from_lang='en',to="fr")
+    print(s)
+    print(blob.translate(from_lang='en',to="hi"))
+    a=blob.translate(from_lang='en',to="hi")
+
+    return HttpResponse(a)
+    
 
 
 @api_view(['POST'])
