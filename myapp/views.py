@@ -1,14 +1,11 @@
 
 from django.shortcuts import render,HttpResponse
 from django.http import JsonResponse
-from .models import *
+from .models import devBlog
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView
-from .serializer import * 
-
-
-
+from .serializer import devBlogSer
 
 @api_view(['POST'])
 def devBlogFunc(request):
@@ -46,3 +43,4 @@ def getDevBlogSinglePostData(request,pk):
 class getDevBlogData(ListCreateAPIView):
     queryset=devBlog.objects.filter(code="ThisCode")
     serializer_class=devBlogSer
+

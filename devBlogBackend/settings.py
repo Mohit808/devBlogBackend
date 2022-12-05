@@ -24,20 +24,22 @@ SECRET_KEY = 'django-insecure-vm%k@d$wp)o&fezg0y3!&5p72=)uy+t6^n!06ez&je=zn*tx+%
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-
+CORS_ORIGIN_ALLOW_ALL = True
 ALLOWED_HOSTS = ['*', 'https://amityadavayx.pythonanywhere.com']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    'django_crontab',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'myapp'
+    'myapp',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -117,8 +119,23 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 STATIC_URL = 'static/'
+STATICFILES_DIRS = [
+    BASE_DIR / "static"
+]
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+
+
+
+# CRONJOBS = [
+#     ('*/1 * * * *', 'myapp.cron.my_scheduled_job')
+# ]
+
+
+
+
+
