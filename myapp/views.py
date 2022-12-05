@@ -5,10 +5,7 @@ from .models import devBlog
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView
-<<<<<<< HEAD
 from .serializer import devBlogSer
-=======
-from .serializer import * 
 import textblob as tb
 
 
@@ -21,9 +18,7 @@ def translate(Request):
     a=blob.translate(from_lang='en',to="hi")
 
     return HttpResponse(a)
-    
 
->>>>>>> ebbef1fa4c471d26669abf4344575c40efff7474
 
 @api_view(['POST'])
 def devBlogFunc(request):
