@@ -61,6 +61,7 @@ class getDevBlogData(ListCreateAPIView):
 @api_view(['GET'])
 def search(request,pk):
     queryset=devBlog.objects.filter(Q(title__contains=pk) | Q(code__contains=pk))
+    # queryset=devBlog.objects.raw("select * from devBlog where title like '%llo%' or code like '%llo%' group by uniqueKeys order by id asc")
     serializer= devBlogSer(queryset,many=True)
     return Response(serializer.data)
 
