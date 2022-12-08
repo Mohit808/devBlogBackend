@@ -7,6 +7,7 @@ from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView
 from .serializer import devBlogSer
 import textblob as tb
+from django.db.models import Q
 
 
 
@@ -56,4 +57,10 @@ def getDevBlogSinglePostData(request,pk):
 class getDevBlogData(ListCreateAPIView):
     queryset=devBlog.objects.filter(code="ThisCode")
     serializer_class=devBlogSer
+
+@api_view(['GET'])
+def search(request,pk):
+    queryset=devBlog.objects.filter(Q(title__contains=pk) | Q(code__contains=pk))
+    serializer= devBlogSer(queryset,many=True)
+    return Response(serializer.data)
 

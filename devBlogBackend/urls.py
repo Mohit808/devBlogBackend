@@ -24,5 +24,6 @@ urlpatterns = [
     path('devBlogFunc/', views.devBlogFunc),
     path('getDevBlogData/', views.getDevBlogData.as_view()),
     path('getDevBlogSinglePostData/<str:pk>',views.getDevBlogSinglePostData),
+    path('search/<str:pk>',views.search),
     # path('call_method/',views.call_method)
 ]
