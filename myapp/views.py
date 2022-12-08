@@ -64,3 +64,4 @@ def search(request,pk):
     serializer= devBlogSer(queryset,many=True)
     return Response(serializer.data)
 
+
