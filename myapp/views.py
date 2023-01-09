@@ -1,11 +1,11 @@
 
 from django.shortcuts import render,HttpResponse
 from django.http import JsonResponse
-from .models import devBlog,StripeDb
+from .models import devBlog,StripeDb,StripeServiceDb
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView
-from .serializer import devBlogSer,StripeDbSerializers
+from .serializer import devBlogSer,StripeDbSerializers,StripeServiceSerializers
 import textblob as tb
 from django.db.models import Q
 
@@ -14,6 +14,10 @@ from django.db.models import Q
 class getStripeData(ListCreateAPIView):
     queryset=StripeDb.objects.all()
     serializer_class=StripeDbSerializers
+
+class getStripeServiceData(ListCreateAPIView):
+    queryset=StripeServiceDb.objects.all()
+    serializer_class=StripeServiceSerializers
 
 
 def translate(Request):

@@ -10,9 +10,16 @@ class devBlog(models.Model):
 
 
 class StripeDb(models.Model):
+    email=models.CharField(max_length=200,default="",primary_key=True)
+    accountId=models.CharField(max_length=100,default="")
+    class Meta:
+        db_table="StripeDb"
+
+class StripeServiceDb(models.Model):
     email=models.CharField(max_length=200,default="")
-    userId=models.CharField(max_length=100,default="")
+    accountId=models.CharField(max_length=100,default="")
     serviceName=models.CharField(max_length=200,default="")
     amount=models.CharField(max_length=200,default="")
     class Meta:
-        db_table="StripeDb"
+        db_table="StripeServiceDb"
+
