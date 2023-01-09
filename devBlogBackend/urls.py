@@ -25,5 +25,7 @@ urlpatterns = [
     path('getDevBlogData/', views.getDevBlogData.as_view()),
     path('getDevBlogSinglePostData/<str:pk>',views.getDevBlogSinglePostData),
     path('search/<str:pk>',views.search),
+    path('getStripeData/',views.getStripeData.as_view())
+    # path('usersNearData',views.usersNearData.as_view())
     # path('call_method/',views.call_method)
 ]

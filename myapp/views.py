@@ -1,14 +1,19 @@
 
 from django.shortcuts import render,HttpResponse
 from django.http import JsonResponse
-from .models import devBlog
+from .models import devBlog,StripeDb
 from rest_framework.decorators import api_view
 from rest_framework.response import Response
 from rest_framework.generics import ListCreateAPIView
-from .serializer import devBlogSer
+from .serializer import devBlogSer,StripeDbSerializers
 import textblob as tb
 from django.db.models import Q
 
+
+
+class getStripeData(ListCreateAPIView):
+    queryset=StripeDb.objects.all()
+    serializer_class=StripeDbSerializers
 
 
 def translate(Request):
