@@ -11,7 +11,7 @@ class devBlogSer(ModelSerializer):
 class StripeDbSerializers(ModelSerializer):
     class Meta:
         model=StripeDb
-        fields=["id","email","accountId"]
+        fields=["email","accountId"]
 
 class StripeServiceSerializers(ModelSerializer):
     class Meta:
