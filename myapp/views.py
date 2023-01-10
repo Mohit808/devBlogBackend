@@ -8,10 +8,19 @@ from rest_framework.generics import ListCreateAPIView
 from .serializer import devBlogSer,StripeDbSerializers,StripeServiceSerializers
 import textblob as tb
 from django.db.models import Q
+from rest_framework import filters
 
 
+def refresh(request):
+
+    return HttpResponse(request.GET.items())
+
+def returns(request):
+    return HttpResponse(request.POST.items())
 
 class getStripeData(ListCreateAPIView):
+    search_fields = ['email']
+    filter_backends = (filters.SearchFilter,)
     queryset=StripeDb.objects.all()
     serializer_class=StripeDbSerializers
 
