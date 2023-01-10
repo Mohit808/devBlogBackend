@@ -9,14 +9,31 @@ from .serializer import devBlogSer,StripeDbSerializers,StripeServiceSerializers
 import textblob as tb
 from django.db.models import Q
 from rest_framework import filters
+import requests
 
 
 def refresh(request):
-
+    print(request.method)
+    accountId=request.GET.get('accountId')
+    fetchAndInsert(accountId)
     return HttpResponse(request.GET.items())
 
 def returns(request):
-    return HttpResponse(request.POST.items())
+    print(request.GET.get('accountId'))
+    accountId=request.GET.get('accountId')
+    fetchAndInsert(accountId)
+    return JsonResponse({'aa': request.method})
+
+def fetchAndInsert(account):
+    headers={'Authorization':'Bearer sk_test_51HeAMDL25PgA0jpVeqxW0YSrkxXftDThuTLDlWljEk7vfD95WnqxNZR5eIguapHR5NctC79TyBRrgH5oTAUVbsU500lBkInllL',
+    'Content-Type':'application/x-www-form-urlencoded'}
+    response=requests.get(f'https://api.stripe.com/v1/accounts/{account}',headers=headers)
+    print(response.json())
+    data=response.json()
+    if data['email']:
+        row=StripeDb(accountId=account,email=data['email'])
+        row.save()
+
 
 class getStripeData(ListCreateAPIView):
     search_fields = ['email']
