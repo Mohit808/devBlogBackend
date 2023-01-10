@@ -25,6 +25,8 @@ class getStripeData(ListCreateAPIView):
     serializer_class=StripeDbSerializers
 
 class getStripeServiceData(ListCreateAPIView):
+    search_fields = ['email']
+    filter_backends = (filters.SearchFilter,)
     queryset=StripeServiceDb.objects.all()
     serializer_class=StripeServiceSerializers
 
